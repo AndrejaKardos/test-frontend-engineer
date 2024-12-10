@@ -1,3 +1,5 @@
+import ProductList from "./ProductList";
+
 const MainContent = () => {
   return (
     <main className="flex-grow bg-gray-50 px-6 py-8">
@@ -9,6 +11,8 @@ const MainContent = () => {
           Explore the best deals on our platform.
         </p>
       </section>
+
+      <ProductList />
     </main>
   );
 };
