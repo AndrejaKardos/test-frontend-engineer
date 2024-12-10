@@ -5,19 +5,27 @@ import { fetchProducts, Product } from "../api/productsApi";
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const fetchedProducts = await fetchProducts();
         setProducts(fetchedProducts);
       } catch (err) {
-        console.log("Unable to retrieve products");
+        setError("Failed to load products. Please try again.");
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
+
+  if (isLoading) return <p>Loading products...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
 
   return (
     <section
