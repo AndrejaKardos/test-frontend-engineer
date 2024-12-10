@@ -1,39 +1,23 @@
 "use client";
 
-import { useState } from "react";
-
-const temporaryHardcodedProducts = [
-  {
-    id: 1,
-    title: "Best Floof",
-    price: 6.5,
-    category: "Category 1",
-    description: "This is a description for Product 1.",
-    image:
-      "https://wallpapers.com/images/featured/cute-coffee-68iaeq3dbhrtw3v3.jpg",
-  },
-  {
-    id: 2,
-    title: "Best Floof",
-    price: 4999.99,
-    category: "Category 2",
-    description: "This is a description for Product 2.",
-    image:
-      "https://kb.rspca.org.au/wp-content/uploads/2024/01/ferret-close-up.jpg",
-  },
-  {
-    id: 3,
-    title: "Best Snack",
-    price: 19.99,
-    category: "Category 3",
-    description: "This is a description for Product 3.",
-    image:
-      "https://msshiandmrhe.com/wp-content/uploads/2023/10/Image_20231013175926-500x500.jpg",
-  },
-];
+import { useState, useEffect } from "react";
+import { fetchProducts, Product } from "../api/productsApi";
 
 const ProductList = () => {
-  const [products] = useState(temporaryHardcodedProducts);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedProducts = await fetchProducts();
+        setProducts(fetchedProducts);
+      } catch (err) {
+        console.log("Unable to retrieve products");
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <section
