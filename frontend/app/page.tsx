@@ -1,13 +1,13 @@
-import Header from "@/app/components/Header";
+import Header from "./components/Header";
+import MainContent from "./components/MainContent";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="min-h-screen bg-indigo-100 flex justify-center items-center">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <header className="text-center p-10">
-        <h1 className="text-4xl font-bold text-indigo-800">Unreal Deals</h1>
-        <p className="mt-4 text-lg text-gray-700">Products coming soon (TM)</p>
-      </header>
+      <MainContent />
     </div>
   );
-}
+};
+
+export default Home;
