@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { fetchProducts, Product } from "../api/productsApi";
+import ProductCard from "./ProductCard";
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -33,19 +34,13 @@ const ProductList = () => {
       className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
       {products.map((product) => (
-        <div
+        <ProductCard
           key={product.id}
-          className="border rounded-lg shadow-md p-4 flex flex-col items-center bg-white"
-        >
-          <img
-            src={product.image}
-            alt={product.title}
-            className="w-32 h-32 object-contain mb-4"
-          />
-          <h2 className="text-lg font-semibold text-center">{product.title}</h2>
-          <p className="text-gray-600 text-sm mb-2">{product.description}</p>
-          <p className="text-indigo-800 font-bold">${product.price}</p>
-        </div>
+          id={product.id}
+          title={product.title}
+          price={product.price}
+          image={product.image}
+        />
       ))}
     </section>
   );
