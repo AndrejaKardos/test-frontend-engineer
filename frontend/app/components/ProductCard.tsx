@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { Product } from "../api/productsApi";
+import { addProductToCart, Product } from "../api/productsApi";
 
 const ProductCard: FC<Product> = ({ id, title, price, image }) => {
   return (
@@ -17,10 +17,13 @@ const ProductCard: FC<Product> = ({ id, title, price, image }) => {
         <h3 className="text-sm font-medium text-gray-800 line-clamp-2">
           {title}
         </h3>
-        <p className="text-lg font-semibold text-indigo-600">{`$${price.toFixed(
-          2
-        )}`}</p>
-        <button className="mt-4 bg-indigo-500 hover:bg-indigo-700 text-white text-sm font-medium py-2 px-4 rounded">
+        <p className="text-lg font-semibold text-indigo-600">
+          {price.toFixed(2)}
+        </p>
+        <button
+          onClick={() => addProductToCart(id, 1)}
+          className="mt-4 bg-indigo-500 hover:bg-indigo-700 text-white text-sm font-medium py-2 px-4 rounded"
+        >
           Add to Basket
         </button>
       </div>
