@@ -29,20 +29,23 @@ const ProductList = () => {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <section
-      id="products"
-      className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-    >
-      {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          id={product.id}
-          title={product.title}
-          price={product.price}
-          image={product.image}
-        />
-      ))}
-    </section>
+    <div className="container mx-auto px-4">
+      <section
+        id="products"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      >
+        {products.map((product) => (
+          <div key={product.id} className="flex justify-center">
+            <ProductCard
+              id={product.id}
+              title={product.title}
+              price={product.price}
+              image={product.image}
+            />
+          </div>
+        ))}
+      </section>
+    </div>
   );
 };
 
