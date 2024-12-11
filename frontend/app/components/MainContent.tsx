@@ -3,7 +3,7 @@ import ProductList from "./ProductList";
 const MainContent = () => {
   return (
     <main className="flex-grow bg-gray-50 px-6 py-8">
-      <section className="max-w-7xl mx-auto pt-[8vh]">
+      <section className="max-w-7xl mx-auto pt-[2vh]">
         <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-indigo-800">
           Welcome to Unreal Deals!
         </h1>
