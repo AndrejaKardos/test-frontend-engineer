@@ -13,7 +13,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="#cart" className="hover:text-yellow-300 text-lg">
+              <Link href="/cart" className="hover:text-yellow-300 text-lg">
                 Cart
               </Link>
             </li>
